@@ -12,10 +12,6 @@ module.exports = function(grunt) {
         dest: 'js/perfmatters.min.js',
         src: 'views/js/main.js',
         dest: 'views/js/main.min.js'
-      },
-      build: {
-        src: 'css/style.css',
-        dest: 'css/style.min.css'
       }
     }
   });
