@@ -15,3 +15,8 @@ Image optimization:
   - size reduction based on suggestion by PageSpeed or inspecting elements
   at chrome devtools.
   - Images compressed at https://compressor.io
+
+JS optimization:
+  - call updatePositions with requestAnimationFrame(updatePositions);
+  - reduce the number of pizzas to be painted  - 20 pizzas fits the screen.
+  
