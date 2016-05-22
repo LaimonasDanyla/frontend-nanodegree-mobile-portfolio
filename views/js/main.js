@@ -499,15 +499,19 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+  var phase;
+  var scrolling = document.body.scrollTop;
+  var pxDist = 100;
+  var modCalc = 5;
+  var reduceSpeed = 1250;
   frame++;
   window.performance.mark("mark_start_frame");
-
   var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
+    items[i].style.left = items[i].basicLeft + pxDist * phase + 'px';
   }
-
+  //requestAnimationFrame(updatePositions);
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -523,10 +527,11 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
+  var elem;
   var cols = 8;
   var s = 256;
   for (var i = 0; i < 20; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-compressor.png";
     elem.style.height = "100px";
