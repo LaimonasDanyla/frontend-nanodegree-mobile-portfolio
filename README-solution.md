@@ -16,7 +16,13 @@ Image optimization:
   at chrome devtools.
   - Images compressed at https://compressor.io
 
-JS optimization:
+main.js optimization:
   - call updatePositions with requestAnimationFrame(updatePositions);
-  - reduce the number of pizzas to be painted  - 20 pizzas fits the screen.
-  
+  - reduce the number of pizzas to be painted  - 20 pizzas is sufficient to
+  cover the screen.
+  - Loops:
+    -all static numbers at function updatePositions are moved to variables
+    above the loop.
+    - document.body.scrollTop moved to var scrolling above the loop.
+    - var phase is defined above the loop.
+    - var elem is defined above the loop.
