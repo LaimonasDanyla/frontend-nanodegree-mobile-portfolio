@@ -47,4 +47,8 @@ Rendering optimization:
 Index.html:
     - move common css styles to inline code in html.
     - move print.css to the end of the head.
-    - make analytics.js async. 
+    - make analytics.js async.
+    - add media query <link href="css/print.css" rel="stylesheet" media="print">
+    - move both CSS links to the bottom of page.
+
+Now PageSpeed: 95/100 mobile and 94/100 desktop. 
