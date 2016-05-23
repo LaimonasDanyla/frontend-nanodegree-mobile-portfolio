@@ -32,4 +32,5 @@ main.js optimization:
     - add switch(size) function
     - define as var randPizzaCont = document.querySelectorAll(".randomPizzaContainer"); in orde to move out var definition out of the loop
     - remove var dx and newWidth and corresponding dx and newWidth lines inside the loop.
-    - remove old unused code with determineDx.     
+    - remove old unused code with determineDx.  
+Page Speed Score with the optimization above: 91/100.  
