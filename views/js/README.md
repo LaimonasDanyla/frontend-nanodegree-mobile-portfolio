@@ -47,4 +47,6 @@ Rendering optimization:
 Index.html:
     - move common css styles to inline code in html.
     - move print.css to the end of the head.
-    - make analytics.js async. 
+    - make analytics.js async.
+    - add media query to <link href="css/print.css" rel="stylesheet" media="print">
+    - move both css links to bottom of page
