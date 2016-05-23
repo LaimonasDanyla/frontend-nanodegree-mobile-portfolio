@@ -30,7 +30,21 @@ main.js optimization:
 
   Function changePizzaSizes:
     - add switch(size) function
-    - define as var randPizzaCont = document.querySelectorAll(".randomPizzaContainer"); in orde to move out var definition out of the loop
-    - remove var dx and newWidth and corresponding dx and newWidth lines inside the loop.
+
+    - define as var randPizzaCont =
+    document.querySelectorAll(".randomPizzaContainer");
+    in orde to move out var definition out of the loop
+
+    - remove var dx and newWidth and
+    corresponding dx and newWidth lines inside the loop.
+
     - remove old unused code with determineDx.  
-Page Speed Score with the optimization above: 91/100.  
+
+Page Speed Score with the optimization above: 91/100 for Desktop, 77 for mobile.
+
+
+Rendering optimization:
+Index.html:
+    - move common css styles to inline code in html.
+    - move print.css to the end of the head.
+    - make analytics.js async. 
