@@ -437,6 +437,7 @@ function changePizzaSizes(size) {
     console.log("bug ins sizeSwitcher");
   }
   //define quelryselector as variable
+  //chenge to getElementsByClassName
   var randPizzaCont = document.getElementsByClassName("randomPizzaContainer");
     // move the lenght counting outside the loop
     // start value, end value;
@@ -458,6 +459,7 @@ changePizzaSizes(size);
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+//change to getElementById
 var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -497,6 +499,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   var items = document.getElementsByClassName('mover');
   var phase;
+  //moving variable outisde the loop and settign min and max values in the loop
   var itemsLength1 = items.length;
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
     phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
