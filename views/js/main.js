@@ -437,7 +437,7 @@ function changePizzaSizes(size) {
     console.log("bug ins sizeSwitcher");
   }
   //define quelryselector as variable
-  var randPizzaCont = document.querySelectorAll(".randomPizzaContainer");
+  var randPizzaCont = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randPizzaCont.length; i++) {
     randPizzaCont[i].style.width = newWidth + "%";
   }
