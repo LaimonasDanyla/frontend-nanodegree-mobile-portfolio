@@ -524,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var elem;
   var cols = 8;
   var s = 256;
+  //move getElementById("movingPizzas1") outisde the loop for faster performance
   var movingPizzasElem = document.getElementById("movingPizzas1");
   for (var i = 0; i < 60; i++) {
     elem = document.createElement('img');

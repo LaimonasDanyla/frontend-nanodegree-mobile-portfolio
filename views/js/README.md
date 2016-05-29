@@ -48,7 +48,25 @@ Index.html:
     - move common css styles to inline code in html.
     - move print.css to the end of the head.
     - make analytics.js async.
-    - add media query <link href="css/print.css" rel="stylesheet" media="print">
-    - move both CSS links to the bottom of page.
+    - add media query to <link href="css/print.css" rel="stylesheet" media="print">
+    - move both css links to bottom of page
 
-Now PageSpeed: 95/100 mobile and 94/100 desktop. 
+----------------------------------------------
+After code review
+----------------------------------------------
+main.js:
+  - use getElementById at resizePizzas function
+  - the use of "use strict"; to resizePizzas function caused errors -
+  so statement was removed.
+  - at var randPizzaCont use document.getElementsByClassName("randomPizzaContainer");
+  - set amout of pizzas to 60, to fit most of screens
+  (iPhone5 had longest and needed most of moving pizzas)
+  - at randPizzaCont loop move measurements of lengthto local variable, set min
+  and max value, e.g.: for (var i = 0, len = len1; i < len; i++)
+  - declare pizzaDiv outside the loop
+  - move measuring of length into local var at updatePositions:
+      var itemsLength1 = items.length;
+        for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
+  - update: use getElementById for movingPizzas1
+  - move getElementById("movingPizzas1"); outside the loop
+  
