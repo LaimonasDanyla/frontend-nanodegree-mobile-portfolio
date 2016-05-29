@@ -438,7 +438,11 @@ function changePizzaSizes(size) {
   }
   //define quelryselector as variable
   var randPizzaCont = document.getElementsByClassName("randomPizzaContainer");
-    for (var i = 0; i < randPizzaCont.length; i++) {
+    // move the lenght counting outside the loop
+    // start value, end value;
+    var len1 = randPizzaCont.length;
+    //console.log(len); // check the count
+    for (var i = 0, len = len1; i < len; i++) {
     randPizzaCont[i].style.width = newWidth + "%";
   }
 }
@@ -516,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var elem;
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 60; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-compressor.png";
