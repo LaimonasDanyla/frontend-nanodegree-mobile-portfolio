@@ -43,7 +43,7 @@ input {
 .randomPizzaContainer {
   float: left;
   display: flex;
-  width: 33.33%;
+  width:33.33%;
   height: 325px;
 }
 
@@ -51,7 +51,7 @@ input {
   content: "";
   /*display: table;*/
   clear:both;
-  width: 33.33%;
+  width:33.33%;
   height: 325px;
 }
 
