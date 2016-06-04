@@ -31,12 +31,12 @@ input {
 }
 
 .mover {
+  will-change: transform;
   position: fixed;
   /*width: 256px;*/
   /*height: 100px;*/
   /*width: 73.333px;*/
   z-index: -1;
-  will-change: transform;
 }
 
 .randomPizzaContainer {
