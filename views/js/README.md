@@ -54,7 +54,7 @@ Index.html:
 ----------------------------------------------
 After code review
 ----------------------------------------------
-main.js:
+
   - use getElementById at resizePizzas function
   - the use of "use strict"; to resizePizzas function caused errors -
   so statement was removed.
@@ -69,4 +69,20 @@ main.js:
         for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
   - update: use getElementById for movingPizzas1
   - move getElementById("movingPizzas1"); outside the loop
-  
+  - move randomPizzaContainer styling from JS to CSS File
+  - fix: reduce moving pizza image size, compress and update main.js with
+  new reduced image file
+  - update: move randomPizzaContainer width property from html to css
+  - fix: comment out width porperty from .randomPizzaContainer:after
+  to make all pizzas bigger and uniform
+  - fix: remove will-change: transfrom;  from .mover class - was causing too many layouts
+  - fix: put back will-change: transfrom; to .mover class to reduce
+  the painting time
+  - move the bootstrap css link before the custom style.css
+  - will-change: transfrom; move to the first position of at .mover class
+  - move out some calculations from the loop at updatePositions function
+  - dynamic calculation of required amount of pizzas added for a loop
+  - fix: move .container from bottom to below <body> styling,
+  uncomment <form> styling
+  - inline styling of h2 move to css, rearrange order of styling elements at css
+  -    
