@@ -490,23 +490,25 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
-
+  frame++;
   var modulusCalc;
   var scrolling = document.body.scrollTop;
   var pxDist = 100;
   var modCalc = 5;
   var reduceSpeed = 1250;
   var phase = scrolling / reduceSpeed;
-  frame++;
+
   window.performance.mark("mark_start_frame");
   var items = document.getElementsByClassName('mover');
   var phase;
   //moving variable outisde the loop and settign min and max values in the loop
   var itemsLength1 = items.length;
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
+    //some calculations moved out outside the loop
     modulusCalc = Math.sin(phase + (i % modCalc));
     //phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
     items[i].style.left = items[i].basicLeft + pxDist * modulusCalc + 'px';
+    //   ;
   }
   //requestAnimationFrame(updatePositions);
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -527,16 +529,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var elem;
   var cols = 8;
   var s = 256;
+  var h = window.screen.height / 3;
+  var rows = window.screen.height / cols;
+  console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
   var movingPizzasElem = document.getElementById("movingPizzas1");
-  for (var i = 0; i < 60; i++) {
+  for (var i = 0; i < rows; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza74x101-compressor.png";
     //elem.style.height = "100px";
     //elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    elem.style.top = (Math.floor(i / cols) * h) + 'px';
     movingPizzasElem.appendChild(elem);
   }
   requestAnimationFrame(updatePositions);
