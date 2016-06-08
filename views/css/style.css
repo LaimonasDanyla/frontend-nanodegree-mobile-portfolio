@@ -1,6 +1,9 @@
-/** {
+/*
+* {
   outline: 1px solid red !important;
-}*/
+}
+*/
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -16,15 +19,15 @@ input {
   background: grey;
   font-size: 18px;
 }
-
+/*
 form {
   display: inline-block;
-  backface-visibility: hidden;
 }
-
+*/
 h2 {
   text-align: center;
 }
+
 .container {
  background-color: rgba(240, 60, 60, 0.8);
 }
@@ -35,7 +38,8 @@ h2 {
   /*width: 256px;*/
   /*height: 100px;*/
   /*width: 73.333px;*/
-  z-index: -1;
+  z-index: -1 ;
+  /*opacity: 0.5;*/
 }
 
 .randomPizzaContainer {
@@ -52,11 +56,11 @@ h2 {
   /*width:33.33%;*/
   height: 325px;
 }
-
+/*
 .centered {
   text-align: center;
 }
-
+*/
 #pizzaSize {
   font-weight: 800;
 }
