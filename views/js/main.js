@@ -493,14 +493,14 @@ function updatePositions() {
   frame++;
   var modulusCalc;
   var scrolling = document.body.scrollTop;
-  var pxDist = 100;
-  var modCalc = 5;
   var reduceSpeed = 1250;
   var phase = scrolling / reduceSpeed;
+  var modCalc = 5;
+  var pxDist = 100;
 
   window.performance.mark("mark_start_frame");
   var items = document.getElementsByClassName('mover');
-  var phase;
+
   //moving variable outisde the loop and settign min and max values in the loop
   var itemsLength1 = items.length;
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
@@ -522,7 +522,15 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+//separate scroll and update positions
+//window.addEventListener('scroll', updatePositions);
+
+
+// Separated scroll and updatePositions set to requestAnimationFrame
+window.addEventListener('scroll', function () {
+  requestAnimationFrame(updatePositions);
+});
+
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
@@ -531,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var h = window.screen.height / 3;
   var rows = window.screen.height / cols;
-  console.log(rows);
+  //console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
   var movingPizzasElem = document.getElementById("movingPizzas1");
   for (var i = 0; i < rows; i++) {
@@ -544,5 +552,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * h) + 'px';
     movingPizzasElem.appendChild(elem);
   }
-  requestAnimationFrame(updatePositions);
+  //requestAnimationFrame(updatePositions);
 });
