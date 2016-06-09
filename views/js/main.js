@@ -510,6 +510,7 @@ function updatePositions() {
     items[i].style.left = items[i].basicLeft + pxDist * modulusCalc + 'px';
 
   }
+
   //requestAnimationFrame(updatePositions);
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -553,4 +554,9 @@ document.addEventListener('DOMContentLoaded', function() {
     movingPizzasElem.appendChild(elem);
   }
   //requestAnimationFrame(updatePositions);
+  //need to make one update on position after page is loaded, otherwise
+  //moving pizzas after laod are at one position 
+  elem.onload = function() {
+    requestAnimationFrame(updatePositions);
+  }
 });
