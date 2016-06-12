@@ -95,3 +95,4 @@ After code review
   - adjust pizza sizes: small 65%, medium 75%, large 100%.
   - adjust pizza size to medium 75% after reload at style.css  
   - remove width and height styling of randomPizzaContainer:after at style.css
+  - add webkit prefixes to css (http://autoprefixer.github.io/)
