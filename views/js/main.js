@@ -488,10 +488,11 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-  var items = document.getElementsByClassName('mover');
+  var items = document.body.getElementsByClassName('mover');
   var itemsLength1 = items.length;
   var modulusCalc;
   var scrolling = document.body.scrollTop;
@@ -507,11 +508,15 @@ function updatePositions() {
     //some calculations moved out outside the loop
     modulusCalc = Math.sin(phase + (i % modCalc));
     //phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
-    items[i].style.left = items[i].basicLeft + pxDist * modulusCalc + 'px';
 
+    //not too sure if this way with transform is faster than wiht srtyle.left
+    items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist * modulusCalc) + 'px)';
+
+    //items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
+    //console.log(items[i].basicLeft);
+    //console.log(items[i].basicLeft + pxDist * modulusCalc);
   }
 
-  //requestAnimationFrame(updatePositions);
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -526,19 +531,17 @@ function updatePositions() {
 //separate scroll and update positions
 //window.addEventListener('scroll', updatePositions);
 
-
 // Separated scroll and updatePositions set to requestAnimationFrame
 window.addEventListener('scroll', function () {
   requestAnimationFrame(updatePositions);
 });
-
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var elem;
   var cols = 8;
   var s = 256;
-  var h = window.screen.height / 3;
+  var h = window.screen.height / 4;
   var rows = window.screen.height / cols;
   //console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
@@ -550,12 +553,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //elem.style.height = "100px";
     //elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * h) + 'px';
+    //instead of style.top use style.cssText
+    elem.style.cssText = ' top:' + (Math.floor(i / cols) * h) + 'px;';
     movingPizzasElem.appendChild(elem);
   }
   //requestAnimationFrame(updatePositions);
   //need to make one update on position after page is loaded, otherwise
-  //moving pizzas after laod are at one position 
+  //moving pizzas after laod are at one position
   elem.onload = function() {
     requestAnimationFrame(updatePositions);
   }
