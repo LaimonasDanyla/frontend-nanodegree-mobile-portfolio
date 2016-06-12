@@ -360,18 +360,21 @@ var makeRandomPizza = function() {
 
 // returns a DOM element for each pizza
 var pizzaElementGenerator = function(i) {
-  var pizzaContainer,             // contains pizza title, image and list of ingredients
+  var boostrapClass,
+      pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
       pizzaImage,                 // the pizza image itself
       pizzaDescriptionContainer,  // contains the pizza title and list of ingredients
       pizzaName,                  // the pizza name itself
       ul;                         // the list of ingredients
 
+  bootstrapClass = document.createElement("div");
   pizzaContainer  = document.createElement("div");
   pizzaImageContainer = document.createElement("div");
   pizzaImage = document.createElement("img");
   pizzaDescriptionContainer = document.createElement("div");
 
+  bootstrapClass.classList.add("col-md-4");
   pizzaContainer.classList.add("randomPizzaContainer");
   //pizzaContainer.style.width = "33.33%";
   //pizzaContainer.style.height = "325px";
@@ -394,8 +397,9 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
+  bootstrapClass.appendChild(pizzaContainer);
 
-  return pizzaContainer;
+  return bootstrapClass;
 };
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
@@ -425,13 +429,13 @@ var resizePizzas = function(size) {
 function changePizzaSizes(size) {
   switch (size) {
     case "1":
-      newWidth = 25;
+      newWidth = 65;
       break;
     case "2":
-      newWidth = 33.3;
+      newWidth = 75;
       break;
     case "3":
-      newWidth = 50;
+      newWidth = 100;
       break;
     default:
     console.log("bug ins sizeSwitcher");
@@ -510,9 +514,10 @@ function updatePositions() {
     //phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
 
     //not too sure if this way with transform is faster than wiht srtyle.left
-    items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist * modulusCalc) + 'px)';
+    //items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist * modulusCalc) + 'px)';
 
-    //items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
+    // original way:
+    items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
     //console.log(items[i].basicLeft);
     //console.log(items[i].basicLeft + pxDist * modulusCalc);
   }
