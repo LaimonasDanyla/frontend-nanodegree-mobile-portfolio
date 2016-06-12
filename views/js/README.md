@@ -85,4 +85,13 @@ After code review
   - fix: move .container from bottom to below <body> styling,
   uncomment <form> styling
   - inline styling of h2 move to css, rearrange order of styling elements at css
-  -    
+  - Separated scroll and updatePositions set to requestAnimationFrame
+  - order of styling items at css rearranged.    
+  - fix: run updatePositions after elem is loaded -  
+  to distribute moving pizzas on page after page is loaded.
+  - instead of style.top use style.cssText, line 533: elem.style.cssText = ' top:' + (Math.floor(i / cols) * h) + 'px;';
+  - updatePositions style.left change to transform: translateX
+  - add bootstrap grid for uniform pizza sizes in html, and main.js: add com-md-4.
+  - adjust pizza sizes: small 65%, medium 75%, large 100%.
+  - adjust pizza size to medium 75% after reload at style.css  
+  - remove width and height styling of randomPizzaContainer:after at style.css

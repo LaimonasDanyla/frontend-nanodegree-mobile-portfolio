@@ -47,7 +47,8 @@ h2 {
   float: left;
   display: flex;
   width:75%;
-  height: 325px;
+  height: 400px;
+  font-size: 1em;
 }
 
 .randomPizzaContainer:after {
@@ -57,11 +58,11 @@ h2 {
   /*width:75%;*/
   /*height: 325px;*/
 }
-/*
+
 .centered {
   text-align: center;
 }
-*/
+
 #pizzaSize {
   font-weight: 800;
 }
