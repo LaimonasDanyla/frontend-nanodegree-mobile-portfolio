@@ -511,7 +511,8 @@ function updatePositions() {
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
     //some calculations moved out outside the loop
     modulusCalc = Math.sin(phase + (i % modCalc));
-    //not too sure if this way with transform is faster than with style.left
+    //console.log(i % modCalc);
+    //elements are moving much faster with transform: translateX():
     items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist) * modulusCalc + 'px)';
 
     // original way:
@@ -551,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var h = window.screen.height / 4;
   var rows = window.screen.height / 20;
-  console.log(rows);
+  //console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
   var movingPizzasElem = document.getElementById("movingPizzas1");
   for (var i = 0; i < rows; i++) {
