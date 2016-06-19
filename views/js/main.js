@@ -494,7 +494,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // moving some variable outside function
 var items = document.body.getElementsByClassName('mover');
-var reduceSpeed = 1250;
+var reduceSpeed = 5000;
 var modCalc = 5;
 var pxDist = 100;
 
@@ -503,20 +503,19 @@ function updatePositions() {
   frame++;
   //moving some variables outisde the loop and settign min and max values in the loop
   var itemsLength1 = items.length;
-  var modulusCalc;
   var scrolling = document.body.scrollTop;
   var phase = scrolling / reduceSpeed;
-  window.performance.mark("mark_start_frame");
 
+  window.performance.mark("mark_start_frame");
 
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
     //some calculations moved out outside the loop
     modulusCalc = Math.sin(phase + (i % modCalc));
     //not too sure if this way with transform is faster than with style.left
-    //items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist * modulusCalc) + 'px)';
+    items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist) * modulusCalc + 'px)';
 
     // original way:
-    items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
+    //items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
 
   }
 
