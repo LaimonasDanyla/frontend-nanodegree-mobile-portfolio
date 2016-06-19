@@ -75,7 +75,8 @@ After code review
   - update: move randomPizzaContainer width property from html to css
   - fix: comment out width porperty from .randomPizzaContainer:after
   to make all pizzas bigger and uniform
-  - fix: remove will-change: transfrom;  from .mover class - was causing too many layouts
+  - fix: remove will-change: transfrom;  from .mover class - was causing too
+  many layouts
   - fix: put back will-change: transfrom; to .mover class to reduce
   the painting time
   - move the bootstrap css link before the custom style.css
@@ -89,10 +90,17 @@ After code review
   - order of styling items at css rearranged.    
   - fix: run updatePositions after elem is loaded -  
   to distribute moving pizzas on page after page is loaded.
-  - instead of style.top use style.cssText, line 533: elem.style.cssText = ' top:' + (Math.floor(i / cols) * h) + 'px;';
+  - instead of style.top use style.cssText, line 533: elem.style.cssText =
+  ' top:' + (Math.floor(i / cols) * h) + 'px;';
   - updatePositions style.left change to transform: translateX
   - add bootstrap grid for uniform pizza sizes in html, and main.js: add com-md-4.
   - adjust pizza sizes: small 65%, medium 75%, large 100%.
   - adjust pizza size to medium 75% after reload at style.css  
   - remove width and height styling of randomPizzaContainer:after at style.css
   - add webkit prefixes to css (http://autoprefixer.github.io/)
+  - run updatePositions if scrolled / animated - set a condition to do so
+  (example and idea from discussion forum)
+  - fix: "animating" change to "scroll".  
+  - move some variable outside the updatePositions function
+  - make styling with style.transform = translateX instead of style.left
+  - reduceSpeed set to 5000 (was 1250)
