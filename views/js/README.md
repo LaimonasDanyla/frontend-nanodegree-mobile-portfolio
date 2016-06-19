@@ -104,3 +104,17 @@ After code review
   - move some variable outside the updatePositions function
   - make styling with style.transform = translateX instead of style.left
   - reduceSpeed set to 5000 (was 1250)
+  ---------------------------
+  After Second review
+  ---------------------------
+
+  Getting back to original moving pattern of pizzas:
+  - set var s instead of var h  at 572
+  - make a separate loop to calculate values of modulusCalc outside the main
+  loop at updatePositions
+  - use items[i].style.left original line as transform: translateX modifies the movement way of pizzas, adjust the further code in this line
+
+  Changing back of pizza resizing sizes:
+  - remove bootstrapClass col-md-4 from pizzaElementGenerator function
+  - remove col-md-4 from pizza.html for randomPizzaContainer
+  - remove width 75%, set width 33.33% and height 325px for randomPizzaContainer (before and after) at style.css

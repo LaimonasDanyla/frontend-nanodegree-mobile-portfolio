@@ -374,7 +374,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImage = document.createElement("img");
   pizzaDescriptionContainer = document.createElement("div");
 
-  bootstrapClass.classList.add("col-md-4");
+  //bootstrapClass.classList.add("col-md-4");
   pizzaContainer.classList.add("randomPizzaContainer");
   //pizzaContainer.style.width = "33.33%";
   //pizzaContainer.style.height = "325px";
@@ -397,9 +397,10 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
-  bootstrapClass.appendChild(pizzaContainer);
+  //bootstrapClass.appendChild(pizzaContainer);
 
-  return bootstrapClass;
+  //return bootstrapClass;
+  return pizzaContainer; 
 };
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
@@ -429,13 +430,13 @@ var resizePizzas = function(size) {
 function changePizzaSizes(size) {
   switch (size) {
     case "1":
-      newWidth = 65;
+      newWidth = 25;
       break;
     case "2":
-      newWidth = 75;
+      newWidth = 33.3;
       break;
     case "3":
-      newWidth = 100;
+      newWidth = 50;
       break;
     default:
     console.log("bug ins sizeSwitcher");
@@ -506,6 +507,7 @@ function updatePositions() {
   var scrolling = document.body.scrollTop;
   var phase = scrolling / reduceSpeed;
 
+  // move extra calculations outside the loop.
   var modulusCalc = [];
   for (var i = 0; i < 5; i++) {
     modulusCalc.push(Math.sin(phase + i));

@@ -49,8 +49,8 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width:75%;
-  height: 400px;
+  width:33.33%;
+  height: 325px;
   font-size: 1em;
 }
 
@@ -58,8 +58,8 @@ h2 {
   content: "";
   /*display: table;*/
   clear:both;
-  /*width:75%;*/
-  /*height: 325px;*/
+  width: 33.33%;
+  height: 325px;
 }
 
 .centered {
