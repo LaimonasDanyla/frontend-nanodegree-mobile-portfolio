@@ -492,34 +492,32 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+// moving some variable outside function
+var items = document.body.getElementsByClassName('mover');
+var reduceSpeed = 1250;
+var modCalc = 5;
+var pxDist = 100;
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-  var items = document.body.getElementsByClassName('mover');
+  //moving some variables outisde the loop and settign min and max values in the loop
   var itemsLength1 = items.length;
   var modulusCalc;
   var scrolling = document.body.scrollTop;
-  var reduceSpeed = 1250;
   var phase = scrolling / reduceSpeed;
-  var modCalc = 5;
-  var pxDist = 100;
-
   window.performance.mark("mark_start_frame");
 
-  //moving variable outisde the loop and settign min and max values in the loop
+
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
     //some calculations moved out outside the loop
     modulusCalc = Math.sin(phase + (i % modCalc));
-    //phase = Math.sin((scrolling / reduceSpeed) + (i % modCalc));
-
-    //not too sure if this way with transform is faster than wiht srtyle.left
+    //not too sure if this way with transform is faster than with style.left
     //items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist * modulusCalc) + 'px)';
 
     // original way:
     items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
-    //console.log(items[i].basicLeft);
-    //console.log(items[i].basicLeft + pxDist * modulusCalc);
+
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -530,6 +528,8 @@ function updatePositions() {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
+  //animating false  - if no animation - no updates of positions
+  animating = false;
 }
 
 // runs updatePositions on scroll
@@ -537,8 +537,12 @@ function updatePositions() {
 //window.addEventListener('scroll', updatePositions);
 
 // Separated scroll and updatePositions set to requestAnimationFrame
+// make updatePositions running if scrolled / animated only
 window.addEventListener('scroll', function () {
-  requestAnimationFrame(updatePositions);
+  if (!animating) {
+    requestAnimationFrame(updatePositions);
+    animating = true;
+  }
 });
 
 // Generates the sliding pizzas when the page loads.
