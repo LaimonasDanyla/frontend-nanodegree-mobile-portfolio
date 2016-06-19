@@ -494,7 +494,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // moving some variable outside function
 var items = document.body.getElementsByClassName('mover');
-var reduceSpeed = 5000;
+var reduceSpeed = 1250;
 var modCalc = 5;
 var pxDist = 100;
 
@@ -506,17 +506,22 @@ function updatePositions() {
   var scrolling = document.body.scrollTop;
   var phase = scrolling / reduceSpeed;
 
+  var modulusCalc = [];
+  for (var i = 0; i < 5; i++) {
+    modulusCalc.push(Math.sin(phase + i));
+  }
+
   window.performance.mark("mark_start_frame");
 
   for (var i = 0, itemsLength = itemsLength1; i < itemsLength; i++) {
     //some calculations moved out outside the loop
-    modulusCalc = Math.sin(phase + (i % modCalc));
+    //modulusCalc = Math.sin(phase + (i % modCalc));
     //console.log(i % modCalc);
     //elements are moving much faster with transform: translateX():
-    items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist) * modulusCalc + 'px)';
+    //items[i].style.transform = 'translateX(' + (items[i].basicLeft + pxDist) * modulusCalc + 'px)';
 
     // original way:
-    //items[i].style.left = items[i].basicLeft + pxDist * modulusCalc +'px';
+    items[i].style.left = items[i].basicLeft + pxDist * modulusCalc[i % 5] +'px';
 
   }
 
@@ -550,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var elem;
   var cols = 8;
   var s = 256;
-  var h = window.screen.height / 4;
+  //var h = window.screen.height / 4;
   var rows = window.screen.height / 20;
   //console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
@@ -563,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     //instead of style.top use style.cssText
-    elem.style.cssText = ' top:' + (Math.floor(i / cols) * h) + 'px;';
+    elem.style.cssText = ' top:' + (Math.floor(i / cols) * s) + 'px;';
     movingPizzasElem.appendChild(elem);
   }
   //requestAnimationFrame(updatePositions);
