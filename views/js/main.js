@@ -529,7 +529,7 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
   //animating false  - if no animation - no updates of positions
-  animating = false;
+  scroll = false;
 }
 
 // runs updatePositions on scroll
@@ -539,9 +539,9 @@ function updatePositions() {
 // Separated scroll and updatePositions set to requestAnimationFrame
 // make updatePositions running if scrolled / animated only
 window.addEventListener('scroll', function () {
-  if (!animating) {
+  if (!scroll) {
     requestAnimationFrame(updatePositions);
-    animating = true;
+    scroll = true;
   }
 });
 
@@ -551,8 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   var h = window.screen.height / 4;
-  var rows = window.screen.height / cols;
-  //console.log(rows);
+  var rows = window.screen.height / 20;
+  console.log(rows);
   //move getElementById("movingPizzas1") outisde the loop for faster performance
   var movingPizzasElem = document.getElementById("movingPizzas1");
   for (var i = 0; i < rows; i++) {
