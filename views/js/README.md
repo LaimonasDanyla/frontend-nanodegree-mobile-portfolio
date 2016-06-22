@@ -118,3 +118,10 @@ After code review
   - remove bootstrapClass col-md-4 from pizzaElementGenerator function
   - remove col-md-4 from pizza.html for randomPizzaContainer
   - remove width 75%, set width 33.33% and height 325px for randomPizzaContainer (before and after) at style.css
+
+---------------------
+Third review - bug in pizza resizing sizes, not matching the original size
+--------------------
+ - remove font-size: 1em from randomPizzaContainer at style.css
+ - main.js - pizza medium size set to 33.33, was 33.3.
+ - remove width and height properties from randomPizzaContainer:after at style.css  - this was a bug.
