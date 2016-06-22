@@ -400,7 +400,7 @@ var pizzaElementGenerator = function(i) {
   //bootstrapClass.appendChild(pizzaContainer);
 
   //return bootstrapClass;
-  return pizzaContainer; 
+  return pizzaContainer;
 };
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
@@ -433,7 +433,7 @@ function changePizzaSizes(size) {
       newWidth = 25;
       break;
     case "2":
-      newWidth = 33.3;
+      newWidth = 33.33;
       break;
     case "3":
       newWidth = 50;
