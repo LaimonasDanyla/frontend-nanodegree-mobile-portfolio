@@ -449,7 +449,7 @@ function changePizzaSizes(size) {
     var len1 = randPizzaCont.length;
     //console.log(len); // check the count
     for (var i = 0, len = len1; i < len; i++) {
-    randPizzaCont[i].style.width = newWidth + "%";
+      randPizzaCont[i].style.width = newWidth + "%";
   }
 }
 changePizzaSizes(size);
