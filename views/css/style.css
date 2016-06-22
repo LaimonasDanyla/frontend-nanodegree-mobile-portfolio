@@ -51,15 +51,15 @@ h2 {
   display: flex;
   width:33.33%;
   height: 325px;
-  font-size: 1em;
+  /*font-size: 1em;*/
 }
 
 .randomPizzaContainer:after {
   content: "";
   /*display: table;*/
   clear:both;
-  width: 33.33%;
-  height: 325px;
+  /*width: 33.33%;
+  height: 325px;*/
 }
 
 .centered {
